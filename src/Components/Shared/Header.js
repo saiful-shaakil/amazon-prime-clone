@@ -28,21 +28,21 @@ function Header() {
       </div>
       {/* Header Right Side Options */}
       <div className="flex justify-evenly">
-        <div className="flex flex-col mx-[10px] text-white">
+        <div className="flex leading-5 flex-col mx-[15px] text-white">
           <span className="text-[10px]">Hello Guest</span>
           <span className="text-[13px] font-extrabold">Sign In</span>
         </div>
-        <div className="flex flex-col mx-[10px] text-white">
+        <div className="flex leading-5 flex-col mx-[15px] text-white">
           <span className="text-[10px]">Returns</span>
           <span className="text-[13px] font-extrabold">& Order</span>
         </div>
-        <div className="flex flex-col mx-[10px] text-white">
+        <div className="flex leading-5 flex-col mx-[15px] text-white">
           <span className="text-[10px]">Your</span>
           <span className="text-[13px] font-extrabold">Prime</span>
         </div>
-        <div className="flex items-center mx-[10px] text-white">
-          <FontAwesomeIcon icon={faBasketShopping} />
+        <div className="flex flex-col justify-center items-center mx-[15px] text-white">
           <span className="text-[13px] font-extrabold mx-[10px]">0</span>
+          <FontAwesomeIcon icon={faBasketShopping} />
         </div>
       </div>
     </header>
