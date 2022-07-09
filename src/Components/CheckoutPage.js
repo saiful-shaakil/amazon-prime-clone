@@ -1,7 +1,11 @@
 import React from "react";
 import Subtotal from "./Subtotal";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { store } from "../store";
 
 function CheckoutPage() {
+  const { cartItems } = useSelector((store) => store.cart);
+  console.log(cartItems);
   return (
     <div className="flex bg-white h-max p-5">
       <div className="left">
