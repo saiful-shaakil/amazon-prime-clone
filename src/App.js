@@ -2,8 +2,16 @@ import Home from "./Components/HomePage/Home";
 import Header from "./Components/Shared/Header";
 import { Routes, Route } from "react-router-dom";
 import CheckoutPage from "./Components/CheckoutPage";
+import { useSelector, useDispatch } from "react-redux/es/exports";
+import { getTotal } from "./Components/ReduxToolkit/cartSlice";
+import { useEffect } from "react";
 
 function App() {
+  const { cartItems } = useSelector((store) => store.cart);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getTotal());
+  }, [cartItems, dispatch]);
   return (
     <div className="bg-[#eaeded]">
       {/* Header */}

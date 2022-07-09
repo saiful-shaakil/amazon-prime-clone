@@ -5,8 +5,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 function Header() {
+  const { cartItems } = useSelector((store) => store.cart);
   return (
     <header className="h-[60px] flex items-center bg-[#131921] sticky top-0 z-50">
       {/* Amazon Logo */}
@@ -49,7 +51,9 @@ function Header() {
             className="flex flex-col justify-center items-center mx-[15px] text-white"
             to="/checkout"
           >
-            <span className="text-[13px] font-extrabold mx-[10px]">0</span>
+            <span className="text-[13px] font-extrabold mx-[10px]">
+              {cartItems?.length}
+            </span>
             <FontAwesomeIcon icon={faBasketShopping} />
           </Link>
         </div>
