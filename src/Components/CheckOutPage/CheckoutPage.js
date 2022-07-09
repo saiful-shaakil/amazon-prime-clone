@@ -1,11 +1,10 @@
 import React from "react";
 import Subtotal from "./Subtotal";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { store } from "../store";
+import CheckOutItem from "./CheckOutItem";
 
 function CheckoutPage() {
   const { cartItems } = useSelector((store) => store.cart);
-  console.log(cartItems);
   return (
     <div className="flex bg-white h-max p-5">
       <div className="left">
@@ -18,6 +17,9 @@ function CheckoutPage() {
           <h2 className="mr-[10px] - p-[10px] border-b-[2px] border-b-[lightgray] text-2xl font-bold">
             Your Shopping Cart
           </h2>
+          {cartItems.map((item) => (
+            <CheckOutItem key={item.id} item={item} />
+          ))}
         </div>
       </div>
       <div>

@@ -1,10 +1,10 @@
 import Home from "./Components/HomePage/Home";
 import Header from "./Components/Shared/Header";
 import { Routes, Route } from "react-router-dom";
-import CheckoutPage from "./Components/CheckoutPage";
 import { useSelector, useDispatch } from "react-redux/es/exports";
 import { getTotal } from "./Components/ReduxToolkit/cartSlice";
 import { useEffect } from "react";
+import CheckoutPage from "./Components/CheckOutPage/CheckoutPage";
 
 function App() {
   const { cartItems } = useSelector((store) => store.cart);
