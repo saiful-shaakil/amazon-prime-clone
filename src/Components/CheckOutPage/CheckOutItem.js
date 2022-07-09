@@ -1,7 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux/es/exports";
+import { removeItem } from "../ReduxToolkit/cartSlice";
 
 function CheckOutItem({ item }) {
   const { id, image, title, price, rating } = item;
+  const dispatch = useDispatch();
   return (
     <div className="flex my-5">
       <img src={image} alt="cart item" className="object-contain w-44 h-44" />
@@ -18,7 +21,10 @@ function CheckOutItem({ item }) {
               <p>⭐</p>
             ))}
         </p>
-        <button className="bg-[#f0c14b] border-[1px] border-[#a88734] text-[#111] mt-2 px-2">
+        <button
+          onClick={() => dispatch(removeItem(id))}
+          className="bg-[#f0c14b] border-[1px] border-[#a88734] text-[#111] mt-2 px-2"
+        >
           Remove
         </button>
       </div>
