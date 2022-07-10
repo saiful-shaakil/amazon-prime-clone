@@ -6,6 +6,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
 import { toast } from "react-toastify";
+import LoadingPage from "../Shared/Loading";
 
 function Register() {
   const [updateProfile, updating] = useUpdateProfile(auth);
@@ -32,9 +33,13 @@ function Register() {
       toast("Form must be filled.");
     }
   };
+  if (loading) {
+    return <LoadingPage></LoadingPage>;
+  }
   if (user) {
     navigate(from, { replace: true });
   }
+
   return (
     <div className="flex flex-col items-center h-[100vh] bg-white">
       <Link to="/">

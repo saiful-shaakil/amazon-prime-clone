@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
+import LoadingPage from "../Shared/Loading";
 function Login() {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
@@ -21,6 +22,9 @@ function Login() {
   if (error) toast.error(error.message);
   if (user) {
     navigate(from, { replace: true });
+  }
+  if (loading) {
+    return <LoadingPage></LoadingPage>;
   }
   //register
   const register = () => {
