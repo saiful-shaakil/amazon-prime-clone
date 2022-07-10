@@ -3,7 +3,7 @@ import CurrencyFormat from "react-currency-format";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useNavigate } from "react-router-dom";
 function Subtotal() {
-  const { cartItems, totalPrice } = useSelector((store) => store.cart);
+  const { cartItems, total } = useSelector((store) => store.cart);
   const navigate = useNavigate();
   return (
     <div className="flex flex-col justify-between w-[300px] h-[110px] p-5 bg-[#f3f3f3] border-[2px] border-[#dddddd] rounded-[3px]">
@@ -21,7 +21,7 @@ function Subtotal() {
           </>
         )}
         decimalScale={2}
-        value={totalPrice} // Part of the homework
+        value={total} // Part of the homework
         displayType={"text"}
         thousandSeparator={true}
         prefix={"$"}

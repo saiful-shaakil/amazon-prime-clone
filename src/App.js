@@ -13,6 +13,7 @@ import React from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PaymentCheckOut from "./Components/CheckOutPage/PaymentCheckOut";
+import OrderPage from "./Components/CheckOutPage/OrderPage";
 
 function App() {
   const { cartItems } = useSelector((store) => store.cart);
@@ -31,6 +32,7 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="*" element={<NotFound />}></Route>
         <Route path="/payment-checkout" element={<PaymentCheckOut />}></Route>
+        <Route path="/my-orders" element={<OrderPage />}></Route>
       </Routes>
 
       <ToastContainer />
