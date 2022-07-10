@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import CheckoutPage from "./Components/CheckOutPage/CheckoutPage";
 import Login from "./Components/User/Login";
 import Register from "./Components/User/Register";
+import NotFound from "./Components/Shared/NotFound";
 import React from "react";
 
 import { ToastContainer } from "react-toastify";
@@ -27,7 +28,9 @@ function App() {
         <Route path="/checkout" element={<CheckoutPage />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
+
       <ToastContainer />
     </div>
   );
