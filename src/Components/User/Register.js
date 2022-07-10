@@ -3,7 +3,7 @@ import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
 import { toast } from "react-toastify";
 
@@ -12,6 +12,8 @@ function Register() {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -31,7 +33,7 @@ function Register() {
     }
   };
   if (user) {
-    navigate("/");
+    navigate(from, { replace: true });
   }
   return (
     <div className="flex flex-col items-center h-[100vh] bg-white">

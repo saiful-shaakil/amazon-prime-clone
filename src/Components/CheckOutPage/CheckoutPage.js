@@ -2,7 +2,7 @@ import React from "react";
 import Subtotal from "./Subtotal";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import CheckOutItem from "./CheckOutItem";
-
+import FlipMove from "react-flip-move";
 function CheckoutPage() {
   const { cartItems } = useSelector((store) => store.cart);
   return (

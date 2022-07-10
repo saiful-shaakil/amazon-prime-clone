@@ -39,7 +39,9 @@ function Header() {
       {/* Header Right Side Options */}
       <div className="flex justify-evenly">
         <div className="flex leading-5 flex-col mx-[15px] text-white">
-          <span className="text-[10px]">Hello {user?.displayName}</span>
+          <span className="text-[10px]">
+            Hello {!user ? "Guest" : user?.displayName}
+          </span>
           {user ? (
             <button
               onClick={() => signOut(auth)}

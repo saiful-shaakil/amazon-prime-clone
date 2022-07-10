@@ -1,8 +1,8 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { useDispatch } from "react-redux/es/exports";
 import { removeItem } from "../ReduxToolkit/cartSlice";
 
-function CheckOutItem({ item }) {
+export const CheckOutItem = forwardRef(({ item }, ref) => {
   const { id, image, title, price, rating } = item;
   const dispatch = useDispatch();
   return (
@@ -30,6 +30,6 @@ function CheckOutItem({ item }) {
       </div>
     </div>
   );
-}
+});
 
 export default CheckOutItem;
