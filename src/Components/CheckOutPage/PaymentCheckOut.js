@@ -48,7 +48,7 @@ function PaymentCheckOut() {
           <div className="flex-[0.2]">
             <h1 className="text-xl font-medium">Payment Method</h1>
           </div>
-          <div className="flex-[0.8]">
+          <div className="flex-[0.8] ml-9">
             {/* stripe */}
             <Elements stripe={promise}>
               <StripePaymentForm />
