@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
+import { toast } from "react-toastify";
 
 function Register() {
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +15,19 @@ function Register() {
   //sign in
   const register = (e) => {
     e.preventDefault();
+    if (password && email && rePass && name) {
+      if (password === rePass) {
+        createUserWithEmailAndPassword(email, password);
+      } else {
+        toast("Password must be matched");
+      }
+    } else {
+      toast("Form must be filled.");
+    }
   };
+  if (user) {
+    navigate("/");
+  }
   return (
     <div className="flex flex-col items-center h-[100vh] bg-white">
       <Link to="/">

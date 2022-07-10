@@ -7,6 +7,10 @@ import { useEffect } from "react";
 import CheckoutPage from "./Components/CheckOutPage/CheckoutPage";
 import Login from "./Components/User/Login";
 import Register from "./Components/User/Register";
+import React from "react";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { cartItems } = useSelector((store) => store.cart);
@@ -24,6 +28,7 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }
