@@ -45,7 +45,7 @@ function Header() {
           {user ? (
             <button
               onClick={() => signOut(auth)}
-              className="text-[10px] font-extrabold"
+              className="text-[10px] font-extrabold ml-[-6px]"
             >
               Sign Out
             </button>
