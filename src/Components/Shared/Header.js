@@ -6,8 +6,12 @@ import {
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../firebase.init";
+import { signOut } from "firebase/auth";
 
 function Header() {
+  const [user] = useAuthState(auth);
   const { cartItems } = useSelector((store) => store.cart);
   return (
     <header className="h-[60px] flex items-center bg-[#131921] sticky top-0 z-50">
@@ -35,10 +39,19 @@ function Header() {
       {/* Header Right Side Options */}
       <div className="flex justify-evenly">
         <div className="flex leading-5 flex-col mx-[15px] text-white">
-          <span className="text-[10px]">Hello Guest</span>
-          <Link to="/login">
-            <span className="text-[13px] font-extrabold">Sign In</span>
-          </Link>
+          <span className="text-[10px]">Hello {user?.displayName}</span>
+          {user ? (
+            <button
+              onClick={() => signOut(auth)}
+              className="text-[10px] font-extrabold"
+            >
+              Sign Out
+            </button>
+          ) : (
+            <Link to="/login">
+              <span className="text-[13px] font-extrabold">Sign In</span>
+            </Link>
+          )}
         </div>
         <div className="flex leading-5 flex-col mx-[15px] text-white">
           <span className="text-[10px]">Returns</span>

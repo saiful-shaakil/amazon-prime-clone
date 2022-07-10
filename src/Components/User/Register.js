@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
 import { toast } from "react-toastify";
 
 function Register() {
+  const [updateProfile, updating] = useUpdateProfile(auth);
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const navigate = useNavigate();
@@ -13,11 +17,12 @@ function Register() {
   const [name, setName] = useState("");
   const [rePass, setRePass] = useState("");
   //sign in
-  const register = (e) => {
+  const register = async (e) => {
     e.preventDefault();
     if (password && email && rePass && name) {
       if (password === rePass) {
-        createUserWithEmailAndPassword(email, password);
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
       } else {
         toast("Password must be matched");
       }
