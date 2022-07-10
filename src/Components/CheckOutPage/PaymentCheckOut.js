@@ -4,6 +4,13 @@ import auth from "../firebase.init";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import CheckOutItem from "./CheckOutItem";
 import { Link } from "react-router-dom";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import StripePaymentForm from "./StripePaymentForm";
+
+const promise = loadStripe(
+  "pk_test_51L3GjVAjo3Oz9HwztP0K4uT8wQgUycRVbtITED5jXTYZC9fd4ry3uaCfssebrXqM9JRABtehNLQqXmSa1yyjbQ8Q00RkyHdNNa"
+);
 
 function PaymentCheckOut() {
   const [user] = useAuthState(auth);
@@ -41,7 +48,12 @@ function PaymentCheckOut() {
           <div className="flex-[0.2]">
             <h1 className="text-xl font-medium">Payment Method</h1>
           </div>
-          <div className="flex-[0.8]">{/* stripe */}</div>
+          <div className="flex-[0.8]">
+            {/* stripe */}
+            <Elements stripe={promise}>
+              <StripePaymentForm />
+            </Elements>
+          </div>
         </div>
       </div>
     </div>
