@@ -36,7 +36,9 @@ function Header() {
       <div className="flex justify-evenly">
         <div className="flex leading-5 flex-col mx-[15px] text-white">
           <span className="text-[10px]">Hello Guest</span>
-          <span className="text-[13px] font-extrabold">Sign In</span>
+          <Link to="/login">
+            <span className="text-[13px] font-extrabold">Sign In</span>
+          </Link>
         </div>
         <div className="flex leading-5 flex-col mx-[15px] text-white">
           <span className="text-[10px]">Returns</span>
