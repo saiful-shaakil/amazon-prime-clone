@@ -6,6 +6,7 @@ import { getTotal } from "./Components/ReduxToolkit/cartSlice";
 import { useEffect } from "react";
 import CheckoutPage from "./Components/CheckOutPage/CheckoutPage";
 import Login from "./Components/User/Login";
+import Register from "./Components/User/Register";
 
 function App() {
   const { cartItems } = useSelector((store) => store.cart);
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/checkout" element={<CheckoutPage />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
       </Routes>
     </div>
   );
