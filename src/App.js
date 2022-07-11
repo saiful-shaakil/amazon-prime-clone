@@ -15,6 +15,8 @@ import "react-toastify/dist/ReactToastify.css";
 import PaymentCheckOut from "./Components/CheckOutPage/PaymentCheckOut";
 import OrderPage from "./Components/CheckOutPage/OrderPage";
 import RequireAuth from "./Components/User/RequireAuth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "./Components/firebase.init";
 
 function App() {
   const { cartItems } = useSelector((store) => store.cart);

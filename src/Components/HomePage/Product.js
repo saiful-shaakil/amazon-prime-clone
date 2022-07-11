@@ -1,6 +1,7 @@
 import React from "react";
 import { addItem } from "../ReduxToolkit/cartSlice";
 import { useDispatch } from "react-redux/es/exports";
+import { toast } from "react-toastify";
 
 function Product({ id, center, title, price, img, rating }) {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function Product({ id, center, title, price, img, rating }) {
         alt="Product"
       />
       <button
-        onClick={() =>
+        onClick={() => {
           dispatch(
             addItem({
               id: id,
@@ -41,8 +42,9 @@ function Product({ id, center, title, price, img, rating }) {
               email: "",
               time: "",
             })
-          )
-        }
+          );
+          toast.success(`${title} is added to your cart.`);
+        }}
         className="bg-[#f0c14b] border-[1px] mt-[10px] border-[#a88734] py-1 px-3 text-[#111]"
       >
         Add to Cart

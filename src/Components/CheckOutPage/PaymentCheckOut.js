@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import StripePaymentForm from "./StripePaymentForm";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const promise = loadStripe(
   "pk_test_51L3GjVAjo3Oz9HwztP0K4uT8wQgUycRVbtITED5jXTYZC9fd4ry3uaCfssebrXqM9JRABtehNLQqXmSa1yyjbQ8Q00RkyHdNNa"
@@ -14,12 +16,17 @@ const promise = loadStripe(
 
 function PaymentCheckOut() {
   const [user] = useAuthState(auth);
-  const { cartItems } = useSelector((store) => store.cart);
+  const { cartItems, amount } = useSelector((store) => store.cart);
+  const navigate = useNavigate();
+  if (amount === 0) {
+    navigate("/");
+    toast.error("Please add something to your cart.");
+  }
   return (
     <div className="bg-white min-w-[700px]">
-      <div className="container">
+      <div className="">
         <h1 className="text-center p-2 font-[400] bg-[#ece3e3] border-b-[2px] border-b-[lightgray]">
-          Checkout (<Link to="/checkout">{cartItems?.length} items</Link>)
+          Checkout (<Link to="/checkout">{amount} items</Link>)
         </h1>
         {/* delivery address */}
         <div className="flex p-5 my-0 mx-5 border-b-[1px] border-b-[lightgray]">

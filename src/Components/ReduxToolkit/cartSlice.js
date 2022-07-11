@@ -12,7 +12,12 @@ const cartSlice = createSlice({
   reducers: {
     addItem: (state, action) => {
       const newItem = action.payload;
-      state.cartItems = [...state.cartItems, newItem];
+      const existItem = state.cartItems.find((item) => item.id === newItem.id);
+      if (existItem === undefined) {
+        state.cartItems = [...state.cartItems, newItem];
+      } else {
+        existItem.amount = existItem.amount + 1;
+      }
     },
     getTotal: (state) => {
       let total = 0;

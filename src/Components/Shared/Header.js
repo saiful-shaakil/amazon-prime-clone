@@ -9,10 +9,15 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../firebase.init";
 import { signOut } from "firebase/auth";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { emptyCart } from "../ReduxToolkit/cartSlice";
 
 function Header() {
   const [user] = useAuthState(auth);
-  const { cartItems } = useSelector((store) => store.cart);
+  const { amount } = useSelector((store) => store.cart);
+  const dispatch = useDispatch();
   return (
     <header className="h-[60px] flex items-center bg-[#131921] sticky top-0 z-50 min-w-[700px]">
       {/* Amazon Logo */}
@@ -40,11 +45,19 @@ function Header() {
       <div className="flex justify-evenly">
         <div className="flex leading-5 flex-col mx-[15px] text-white">
           <span className="text-[10px]">
-            Hello {!user ? "Guest" : user?.displayName}
+            Hello{" "}
+            {!user
+              ? "Guest"
+              : user?.displayName === null
+              ? "Customer"
+              : user?.displayName?.split(" ")[0]}
           </span>
           {user ? (
             <button
-              onClick={() => signOut(auth)}
+              onClick={() => {
+                signOut(auth);
+                dispatch(emptyCart());
+              }}
               className="text-[10px] font-extrabold ml-[-6px]"
             >
               Sign Out
@@ -57,7 +70,9 @@ function Header() {
         </div>
         <div className="flex leading-5 flex-col mx-[15px] text-white">
           <span className="text-[10px]">Returns</span>
-          <span className="text-[13px] font-extrabold">& Order</span>
+          <Link to="/my-orders">
+            <span className="text-[13px] font-extrabold">& Order</span>
+          </Link>
         </div>
         <div className="flex leading-5 flex-col mx-[15px] text-white">
           <span className="text-[10px]">Your</span>
@@ -69,7 +84,7 @@ function Header() {
             to="/checkout"
           >
             <span className="text-[13px] font-extrabold mx-[10px]">
-              {cartItems?.length}
+              {amount}
             </span>
             <FontAwesomeIcon icon={faBasketShopping} />
           </Link>

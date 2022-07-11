@@ -6,7 +6,7 @@ import FlipMove from "react-flip-move";
 function CheckoutPage() {
   const { cartItems } = useSelector((store) => store.cart);
   return (
-    <div className="flex bg-white h-max p-5 min-w-[700px]">
+    <div className="flex bg-white h-max p-5 min-w-[700px] max-w-full">
       <div className="left">
         <img
           className="mb-[10px]"

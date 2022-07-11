@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 
 function Order({ item }) {
-  const { id, image, title, price, rating, time, paymentID } = item;
+  const { id, image, title, price, rating, time, paymentID, amount } = item;
   const dispatch = useDispatch();
   return (
     <div className="flex my-5">
@@ -12,6 +12,9 @@ function Order({ item }) {
         <p className="">
           <small>$</small>
           <strong>{price}</strong>
+        </p>
+        <p>
+          <strong>{amount} pcs</strong>
         </p>
         <p className="flex">
           {Array(rating)

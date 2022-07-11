@@ -17,7 +17,7 @@ function OrderPage() {
       .then((data) => {
         setOrders(data);
       });
-  }, [user]);
+  }, [user?.email]);
 
   return (
     <div className="mx-20 min-w-[700px]">

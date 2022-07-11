@@ -1,9 +1,10 @@
 import React, { forwardRef } from "react";
 import { useDispatch } from "react-redux/es/exports";
 import { removeItem } from "../ReduxToolkit/cartSlice";
+import { toast } from "react-toastify";
 
 export const CheckOutItem = forwardRef(({ item }, ref) => {
-  const { id, image, title, price, rating } = item;
+  const { id, image, title, price, rating, amount } = item;
   const dispatch = useDispatch();
   return (
     <div className="flex my-5">
@@ -14,6 +15,9 @@ export const CheckOutItem = forwardRef(({ item }, ref) => {
           <small>$</small>
           <strong>{price}</strong>
         </p>
+        <p>
+          <strong>{amount}</strong> pcs
+        </p>
         <p className="flex">
           {Array(rating)
             .fill()
@@ -22,7 +26,10 @@ export const CheckOutItem = forwardRef(({ item }, ref) => {
             ))}
         </p>
         <button
-          onClick={() => dispatch(removeItem(id))}
+          onClick={() => {
+            dispatch(removeItem(id));
+            toast.success(`${title} is removed from your cart.`);
+          }}
           className="bg-[#f0c14b] border-[1px] border-[#a88734] text-[#111] mt-2 px-2"
         >
           Remove
