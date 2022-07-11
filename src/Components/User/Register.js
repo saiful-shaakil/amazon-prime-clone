@@ -27,10 +27,10 @@ function Register() {
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
       } else {
-        toast("Password must be matched");
+        toast.error("Password must be matched.");
       }
     } else {
-      toast("Form must be filled.");
+      toast.error("Form must be filled.");
     }
   };
   if (loading) {

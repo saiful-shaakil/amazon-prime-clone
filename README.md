@@ -1,3 +1,21 @@
+## Live site
+
+[Click Here](https://emajohn-prime-clone.web.app/)
+
+## About this site
+
+It's a tiny-miny clone of amazon where a user will be able add/remove products in/from his cart and payment via stripe.
+
+## Used Technology
+
+- React JS
+- Redux Toolkit
+- Stripe
+- Tailwind
+- react-router
+- react-toastify
+- react currency formatter
+
 ## Available Scripts
 
 In the project directory, you can run:

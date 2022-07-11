@@ -14,7 +14,7 @@ function Product({ id, center, title, price, img, rating }) {
           <strong>{price}</strong>
         </p>
         <div className="flex">
-          <span className="flex mx-auto my-2">
+          <span className={`flex my-2 mr-auto ${center && "mx-auto"}`}>
             {Array(rating)
               .fill()
               .map((_, i) => {

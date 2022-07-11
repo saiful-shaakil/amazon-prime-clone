@@ -9,14 +9,11 @@ import Login from "./Components/User/Login";
 import Register from "./Components/User/Register";
 import NotFound from "./Components/Shared/NotFound";
 import React from "react";
-
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PaymentCheckOut from "./Components/CheckOutPage/PaymentCheckOut";
 import OrderPage from "./Components/CheckOutPage/OrderPage";
 import RequireAuth from "./Components/User/RequireAuth";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "./Components/firebase.init";
 
 function App() {
   const { cartItems } = useSelector((store) => store.cart);
@@ -33,7 +30,6 @@ function App() {
         <Route path="/checkout" element={<CheckoutPage />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
-        <Route path="*" element={<NotFound />}></Route>
         <Route
           path="/payment-checkout"
           element={
@@ -50,6 +46,8 @@ function App() {
             </RequireAuth>
           }
         ></Route>
+
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
 
       <ToastContainer />
@@ -58,5 +56,3 @@ function App() {
 }
 
 export default App;
-
-// https://images-na.ssl-images-amazon.com/images/G/01/AmazonMusic/2020/ACQ/Gateway/HolidayNonPromo/DV5/US-EN_100120_HOLNonPromo_ACQ_GW_Hero_D_3000x1200_CV4_2._CB415751492_.jpg)
