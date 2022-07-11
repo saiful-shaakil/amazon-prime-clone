@@ -29,7 +29,7 @@ function StripePaymentForm() {
     totalPrice = total;
     totalPrice = totalPrice.toFixed(2);
   } else {
-    totalPrice = 5;
+    totalPrice = 2;
   }
   //creating a new array because redux toolkit array is read only
   let newOrderArray = [];
@@ -39,7 +39,7 @@ function StripePaymentForm() {
   //time
   const dateTime = new Date().toLocaleString();
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://enigmatic-coast-33836.herokuapp.com/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -68,7 +68,7 @@ function StripePaymentForm() {
             item.email = user?.email;
             item.time = dateTime;
           });
-          fetch("http://localhost:5000/post-orders", {
+          fetch("https://enigmatic-coast-33836.herokuapp.com/post-orders", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -91,7 +91,7 @@ function StripePaymentForm() {
   return (
     <form onSubmit={handleSubmit}>
       <CardElement onChange={handleChange} />
-      <div>
+      <div className=" text-left py-2">
         <CurrencyFormat
           renderText={(value) => (
             <>
@@ -109,8 +109,8 @@ function StripePaymentForm() {
         />
         <button
           type="submit"
-          className={`border px-2 rounded-sm ${
-            processing ? "bg-green-500" : "bg-green-100 text-black"
+          className={`bg-[#f0c14b] rounded-[2px] w-[60%] h-7 border-[1px] my-2 border-[#a88734] text-[#111] ${
+            processing && "bg-green-600"
           }`}
           disabled={processing || disabled || succeed}
         >
@@ -118,7 +118,7 @@ function StripePaymentForm() {
         </button>
       </div>
       {/* Errors */}
-      {error && <p>{error}</p>}
+      {error && <p className="text-red-500">{error}</p>}
     </form>
   );
 }

@@ -14,7 +14,7 @@ function Header() {
   const [user] = useAuthState(auth);
   const { cartItems } = useSelector((store) => store.cart);
   return (
-    <header className="h-[60px] flex items-center bg-[#131921] sticky top-0 z-50">
+    <header className="h-[60px] flex items-center bg-[#131921] sticky top-0 z-50 min-w-[700px]">
       {/* Amazon Logo */}
       <Link to="/">
         {" "}

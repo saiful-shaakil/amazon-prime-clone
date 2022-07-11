@@ -14,6 +14,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PaymentCheckOut from "./Components/CheckOutPage/PaymentCheckOut";
 import OrderPage from "./Components/CheckOutPage/OrderPage";
+import RequireAuth from "./Components/User/RequireAuth";
 
 function App() {
   const { cartItems } = useSelector((store) => store.cart);
@@ -22,7 +23,7 @@ function App() {
     dispatch(getTotal());
   }, [cartItems, dispatch]);
   return (
-    <div className="bg-[#eaeded]">
+    <div className="bg-[#eaeded] min-w-[700px]">
       {/* Header */}
       <Header />
       <Routes>
@@ -31,8 +32,22 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="*" element={<NotFound />}></Route>
-        <Route path="/payment-checkout" element={<PaymentCheckOut />}></Route>
-        <Route path="/my-orders" element={<OrderPage />}></Route>
+        <Route
+          path="/payment-checkout"
+          element={
+            <RequireAuth>
+              <PaymentCheckOut />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/my-orders"
+          element={
+            <RequireAuth>
+              <OrderPage />
+            </RequireAuth>
+          }
+        ></Route>
       </Routes>
 
       <ToastContainer />

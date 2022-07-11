@@ -16,7 +16,7 @@ function PaymentCheckOut() {
   const [user] = useAuthState(auth);
   const { cartItems } = useSelector((store) => store.cart);
   return (
-    <div className="bg-white ">
+    <div className="bg-white min-w-[700px]">
       <div className="container">
         <h1 className="text-center p-2 font-[400] bg-[#ece3e3] border-b-[2px] border-b-[lightgray]">
           Checkout (<Link to="/checkout">{cartItems?.length} items</Link>)
