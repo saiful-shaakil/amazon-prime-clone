@@ -9,8 +9,6 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../firebase.init";
 import { signOut } from "firebase/auth";
-import { useEffect } from "react";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { emptyCart } from "../ReduxToolkit/cartSlice";
 
