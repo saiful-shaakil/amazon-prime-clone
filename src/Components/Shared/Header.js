@@ -41,7 +41,7 @@ function Header() {
       </div>
       {/* Header Right Side Options */}
       <div className="flex justify-evenly">
-        <div className="flex leading-5 flex-col mx-[15px] text-white">
+        <div className="flex leading-5 flex-col mx-[25px] text-white">
           <span className="text-[10px]">
             Hello{" "}
             {!user
@@ -66,13 +66,13 @@ function Header() {
             </Link>
           )}
         </div>
-        <div className="flex leading-5 flex-col mx-[15px] text-white">
+        <div className="flex leading-5 flex-col mx-[25px] text-white">
           <span className="text-[10px]">Returns</span>
           <Link to="/my-orders">
             <span className="text-[13px] font-extrabold">& Order</span>
           </Link>
         </div>
-        <div className="flex leading-5 flex-col mx-[15px] text-white">
+        <div className="flex leading-5 flex-col mx-[25px] text-white">
           <span className="text-[10px]">Your</span>
           <span className="text-[13px] font-extrabold">Prime</span>
         </div>

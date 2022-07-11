@@ -17,11 +17,6 @@ const promise = loadStripe(
 function PaymentCheckOut() {
   const [user] = useAuthState(auth);
   const { cartItems, amount } = useSelector((store) => store.cart);
-  const navigate = useNavigate();
-  if (amount === 0) {
-    navigate("/");
-    toast.error("Please add something to your cart.");
-  }
   return (
     <div className="bg-white min-w-[700px]">
       <div className="">
@@ -46,7 +41,7 @@ function PaymentCheckOut() {
           </div>
           <div className="flex-[0.8]">
             {cartItems.map((item) => (
-              <CheckOutItem key={item.id} item={item} />
+              <CheckOutItem hideRemove key={item.id} item={item} />
             ))}
           </div>
         </div>

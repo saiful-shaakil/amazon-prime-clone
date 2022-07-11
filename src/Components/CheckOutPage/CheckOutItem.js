@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux/es/exports";
 import { removeItem } from "../ReduxToolkit/cartSlice";
 import { toast } from "react-toastify";
 
-export const CheckOutItem = forwardRef(({ item }, ref) => {
+export const CheckOutItem = forwardRef(({ item, hideRemove }, ref) => {
   const { id, image, title, price, rating, amount } = item;
   const dispatch = useDispatch();
   return (
@@ -25,15 +25,17 @@ export const CheckOutItem = forwardRef(({ item }, ref) => {
               <p>⭐</p>
             ))}
         </p>
-        <button
-          onClick={() => {
-            dispatch(removeItem(id));
-            toast.success(`${title} is removed from your cart.`);
-          }}
-          className="bg-[#f0c14b] border-[1px] border-[#a88734] text-[#111] mt-2 px-2"
-        >
-          Remove
-        </button>
+        {!hideRemove && (
+          <button
+            onClick={() => {
+              dispatch(removeItem(id));
+              toast.success(`${title} is removed from your cart.`);
+            }}
+            className="bg-[#f0c14b] border-[1px] border-[#a88734] text-[#111] mt-2 px-2"
+          >
+            Remove
+          </button>
+        )}
       </div>
     </div>
   );
