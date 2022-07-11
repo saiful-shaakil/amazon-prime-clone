@@ -37,6 +37,9 @@ function Product({ id, center, title, price, img, rating }) {
               rating: rating,
               image: img,
               amount: 1,
+              paymentID: "",
+              email: "",
+              time: "",
             })
           )
         }
